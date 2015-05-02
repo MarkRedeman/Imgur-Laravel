@@ -1,0 +1,25 @@
+{
+    "name": "redeman/imgur-laravel",
+    "description": "Laravel Package for Imgur API. Provides easy access to the adyg/php-imgur-api-client library.",
+    "authors": [
+        {
+            "name": "Mark Redeman",
+            "email": "markredeman@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "~5.0 || ~4.0",
+        "adyg/php-imgur-api-client": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "mockery/mockery": "^0.9.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Redeman\\Imgur\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
