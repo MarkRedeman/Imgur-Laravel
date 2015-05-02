@@ -57,7 +57,7 @@ Route::get('imgur/authenticate', ['as' => 'imgur.authenticate',  function() {
 ```blade
 <p>Here are some images for you to enjoy:</p>
 @foreach ($images as $image)
-    <img src="{{ $images[0]->getLink() }}">
+    <img src="{{ $image->getLink() }}">
 @endforeach
 ```
 
