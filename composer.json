@@ -10,7 +10,7 @@
     "require": {
         "php": ">=5.4.0",
         "illuminate/support": "~5.0 || ~4.0",
-        "adyg/php-imgur-api-client": "dev-master"
+        "adyg/php-imgur-api-client": "~1.0.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0",
