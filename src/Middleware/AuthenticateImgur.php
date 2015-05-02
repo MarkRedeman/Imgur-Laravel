@@ -19,8 +19,7 @@ class AuthenticateImgur {
     private $store;
 
     /**
-     * @param  Client  $imgur
-     * @return void
+     * @param Imgur\Client $imgur
      */
     public function __construct(Client $imgur, Storage $store)
     {
@@ -82,7 +81,7 @@ class AuthenticateImgur {
 
         // save the new token
         $token = $this->imgur->getAccessToken();
-        $this->store->put('imgur-token', $token);
+        $this->store->set('imgur-token', $token);
 
         // authenticate the user with the new token
         $this->authenticateUser($token);
