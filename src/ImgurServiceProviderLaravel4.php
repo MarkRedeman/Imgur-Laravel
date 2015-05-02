@@ -1,6 +1,7 @@
 <?php namespace Redeman\Imgur;
 
 use Illuminate\Support\ServiceProvider;
+use Route;
 
 class ImgurServiceProviderLaravel4 extends ServiceProvider {
 
@@ -21,6 +22,10 @@ class ImgurServiceProviderLaravel4 extends ServiceProvider {
      */
     public function register()
     {
+        $this->app['router']->filter(
+            'imgur',
+            'Redeman\Imgur\Filters\AuthenticateImgur'
+        );
     }
 
     /**

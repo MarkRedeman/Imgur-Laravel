@@ -3,12 +3,13 @@
 use Closure;
 use Imgur\Client;
 use Redeman\Imgur\TokenStorage\Storage;
+use Illuminate\Routing\Redirector;
 
 class AuthenticateImgur {
 
     /**
      * The Imgur client
-     * @var Imgur\Client
+     * @var Client
      */
     private $imgur;
 
@@ -18,13 +19,20 @@ class AuthenticateImgur {
      */
     private $store;
 
+
     /**
-     * @param Imgur\Client $imgur
+     * @var Redirector
      */
-    public function __construct(Client $imgur, Storage $store)
+    private $redirector;
+
+    /**
+     * @param Client $imgur
+     */
+    public function __construct(Client $imgur, Storage $store, Redirector $redirector)
     {
         $this->imgur = $imgur;
         $this->store = $store;
+        $this->redirector = $redirector;
     }
 
     /**
@@ -49,7 +57,7 @@ class AuthenticateImgur {
         }
         else
         {
-            return redirect()->route('imgur.authenticate');
+            return $this->redirector->route('imgur.authenticate');
         }
 
         return $next($request);

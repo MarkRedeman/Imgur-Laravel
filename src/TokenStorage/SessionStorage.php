@@ -1,6 +1,6 @@
 <?php namespace Redeman\Imgur\TokenStorage;
 
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Illuminate\Session\Store;
 
 /**
  * Stores the user's token in a session
@@ -9,15 +9,15 @@ class SessionStorage implements Storage {
 
     /**
      * Sesison storage
-     * @var SessionInterface
+     * @var Store
      */
     private $session;
 
     /**
      * Use a session storage to store our tokens
-     * @param SessionInterface $session
+     * @param Store $session
      */
-    public function __construct(SessionInterface $session)
+    public function __construct(Store $session)
     {
         $this->session = $session;
     }

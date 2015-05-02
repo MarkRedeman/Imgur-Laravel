@@ -1,8 +1,8 @@
 ## Description
-A Laravel 5 Package for using the Imgur api. Internally we use [adyg/php-imgur-api-client](https://github.com/Adyg/php-imgur-api-client).
+A Laravel (4 / 5) Package for using the Imgur api. Internally we use [adyg/php-imgur-api-client](https://github.com/Adyg/php-imgur-api-client).
 The package provides a service provider, some configuration and a facade, such that you should be able to get started with writing your app immediately.
 
-Note: this package isn't officially stable yet. There are still some minor issues that need to be solved such as Laravel 4 support.
+Note: this package isn't officially stable yet.
 
 
 ## Getting started
@@ -31,6 +31,7 @@ protected $routeMiddleware = [
 Next you should add the `imgur` middleware to any route were a user should be authenticated by Imgur.
 The `AuthenticateImgur` middleware will store and retrieve the user's access token.
 If the user is not authenticated by the Imgur (meaning your application doesn't know the user's access token), then the user will be redirected to a route with the name `imgur.authenticate`.
+If you are a Laravel 4 user, then you only need to add the service provider. This provider will register a `imgur` filter which you can use for your routes, see the example below how to do this.
 In the following section we show an example of some simple routes.
 
 
@@ -49,9 +50,10 @@ Route::get('/', ['middleware' => ['imgur'], function() {
 Route::get('imgur/authenticate', ['as' => 'imgur.authenticate',  function() {
     $client = App::make('Imgur\Client');
 
-    return View::make('imgur.authenticate')->with('url', $client->getAuthenticationUrl());
+    return View::make('imgur.authenticate')->with('imgurUrl', $client->getAuthenticationUrl());
 }]);
 ```
+If you are a Laravel 4 user, then you should substitute `middleware` with `before`.
 
 `imgur.images.blade.php`:
 ```blade
@@ -64,7 +66,7 @@ Route::get('imgur/authenticate', ['as' => 'imgur.authenticate',  function() {
 `imgur.authenticate.blade.php`:
 ```blade
 <h2>You need to register with Imgur in order to visit this page:</h2>
-<a href="{{ $url }}">Click to authorize</a>
+<a href="{{ $imgurUrl }}">Click to authorize</a>
 ```
 
 Now you're all set! The next section describes how you can configure the package to use your client id, secret and a custom `TokenStorage`.
@@ -102,5 +104,5 @@ The `AuthenticateImgur` middleware uses a `Redeman\Imgur\TokenStorage\Storage` i
 However you could also use a database or some other storage facility. To do this you will have to change the `token_storage` value in your `config/imgur.php` file to the name of the class that you want to use.
 
 ## Todos:
-- Laravel 4 support
 - More storage facilities by default
+- Add tests for the middleware and filters

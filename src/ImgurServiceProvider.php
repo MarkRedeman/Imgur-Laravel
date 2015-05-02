@@ -56,9 +56,9 @@ class ImgurServiceProvider extends ServiceProvider
     {
         // Configure any bindings that are version dependent
         $this->provider->register();
-        $config = $this->provider->config();
 
-        $this->app->bindShared('Imgur\Client', function() use ($config) {
+        $this->app->bindShared('Imgur\Client', function() {
+            $config = $this->provider->config();
             // Setup the client
             $client = new Client;
             $client->setOption('client_id', $config['client_id']);
@@ -68,11 +68,12 @@ class ImgurServiceProvider extends ServiceProvider
         });
 
         // Make the token storage configurable
-        $this->app->bind(
-            'Redeman\Imgur\TokenStorage\Storage',
-            $config['token_storage']
-        );
+        $this->app->bind('Redeman\Imgur\TokenStorage\Storage', function($app) {
+            $config = $this->provider->config();
+            return $app->make($config['token_storage']);
+        });
     }
+
 
     /**
      * Register the ServiceProvider according to Laravel version

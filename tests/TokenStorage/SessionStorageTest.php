@@ -15,7 +15,7 @@ class SessionStorageTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->storage = Mockery::mock(
-            'Symfony\Component\HttpFoundation\Session\SessionInterface'
+            'Illuminate\Session\Store'
         );
 
         $this->session = new SessionStorage($this->storage);
