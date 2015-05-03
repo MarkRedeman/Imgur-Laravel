@@ -6,12 +6,18 @@ use Redeman\Imgur\Middleware\AuthenticateImgur as Middleware;
 class AuthenticateImgur {
 
     /**
+     * @var Middleware
+     */
+    private $middleware;
+
+    /**
      * @var Request
      */
     private $request;
 
     /**
-     * @param Client $imgur
+     * @param Middleware $middleware
+     * @param Request    $request
      */
     public function __construct(Middleware $middleware, Request $request)
     {
@@ -26,6 +32,6 @@ class AuthenticateImgur {
      */
     public function filter()
     {
-        return $this->middleware->handle($this->request, function($request) {});
+        return $this->middleware->handle($this->request, function() {});
     }
 }
