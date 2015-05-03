@@ -4,6 +4,17 @@ The package provides a service provider, some configuration and a facade, such t
 
 Note: this package isn't officially stable yet.
 
+### Quick example
+```php
+use Redeman\Imgur\Facades\Imgur;
+
+$images = Imgur::api('gallery')->randomGalleryImages();
+
+foreach ($images as $image)
+{
+    echo '<li><img src="' . $image->getLink() . '"></li>';
+}
+```
 
 ## Getting started
 First you will have to install the package using composer, this can be done by adding the following to your `require` block,
