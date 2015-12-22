@@ -2,7 +2,7 @@
 A Laravel (4 / 5) Package for using the Imgur api. Internally we use [adyg/php-imgur-api-client](https://github.com/Adyg/php-imgur-api-client).
 The package provides a service provider, some configuration and a facade, such that you should be able to get started with writing your app immediately.
 
-Note: this package isn't officially stable yet.
+For more detailed documentation on how to use `adyg/php-imgur-api-client` you should look at their [documentation](https://github.com/Adyg/php-imgur-api-client/tree/master/doc).
 
 ### Quick example
 ```php
@@ -19,7 +19,7 @@ foreach ($images as $image)
 ## Getting started
 First you will have to install the package using composer, this can be done by adding the following to your `require` block,
 ```
-"redeman/imgur-laravel": "dev-master",
+"redeman/imgur-laravel": "~1.0",
 ```
 Next you can register the service provider by adding,
 ```php
@@ -92,7 +92,7 @@ php artisan config:publish redeman/imgur-laravel
 
 #### Laravel 5:
 ```
-php artisan vendor:publish --provider=redeman/imgur-laravel
+php artisan vendor:publish --provider="Redeman\Imgur\ImgurServiceProviderLaravel5"
 ```
 
 Now you can fill in the appropriate values for `client_id` and `client_secret`. It is encouraged to use a `.env` which contains your client id and secret. Here is how you can do this in laravel 5:
