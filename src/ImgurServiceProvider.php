@@ -57,7 +57,7 @@ class ImgurServiceProvider extends ServiceProvider
         // Configure any bindings that are version dependent
         $this->provider->register();
 
-        $this->app->bindShared('Imgur\Client', function() {
+        $this->app->singleton('Imgur\Client', function() {
             $config = $this->provider->config();
             // Setup the client
             $client = new Client;
