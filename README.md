@@ -1,8 +1,8 @@
 ## Description
-A Laravel (4 / 5) Package for using the Imgur api. Internally we use [adyg/php-imgur-api-client](https://github.com/Adyg/php-imgur-api-client).
+A Laravel (4 / 5) Package for using the Imgur api. Internally we use [j0k3r/php-imgur-api-client](https://github.com/j0k3r/php-imgur-api-client).
 The package provides a service provider, some configuration and a facade, such that you should be able to get started with writing your app immediately.
 
-For more detailed documentation on how to use `adyg/php-imgur-api-client` you should look at their [documentation](https://github.com/Adyg/php-imgur-api-client/tree/master/doc).
+For more detailed documentation on how to use `j0k3r/php-imgur-api-client` you should look at their [documentation](https://github.com/j0k3r/php-imgur-api-client).
 
 ### Quick example
 ```php
