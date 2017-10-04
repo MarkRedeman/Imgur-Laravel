@@ -43,6 +43,6 @@ class SessionStorage implements Storage {
      */
     public function set($name, $value)
     {
-        $this->session->set($name, $value);
+        $this->session->put($name, $value);
     }
 }
